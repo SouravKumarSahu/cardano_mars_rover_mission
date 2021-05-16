@@ -2,7 +2,7 @@
 <h1>interview take home project</h1>
 
 <h3>Execute mission : </h3>
-<i>python3 exec_landing.py -i-text input.txt [-o-text output.txt]</i>
+<i>python3 exec_landing.py -i-text input.txt [-o-text output.txt] [-o-log log.txt]</i>
 
 
 
@@ -33,4 +33,4 @@ Successful - ()<br />
 Await rescue - ()<br />
 
 <h2></h2>
-<h3>Please check logs on the console for more details during execution</h3>
+<h3>Please check log.txt details on execution</h3>
