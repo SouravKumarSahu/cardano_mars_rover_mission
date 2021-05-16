@@ -1,9 +1,11 @@
 # cardano_mars_rover_mission
 interview take home project
 
-
-Execution command :
+Execute mission :
 python3 ExecuteLanding.py -i-text input.txt [-o-text output2.txt]
+
+Execute Unittest cases:
+python3 -m unittest -v
 
 Text input file format :
 4 5
