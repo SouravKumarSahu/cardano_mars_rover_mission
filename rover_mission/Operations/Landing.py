@@ -1,6 +1,6 @@
-from RoverMission.Objects.Rover import Rover
-from RoverMission.Constants.Parameters import directions
-from RoverMission.Objects import Rover, Mars
+from rover_mission.Objects.rover import Rover
+from rover_mission.constants.params import DIRECTIONS
+from rover_mission.Objects import mars
 
 
 class LandingProhibited(Exception):
@@ -11,18 +11,18 @@ class LandingProhibited(Exception):
 
 def land_rover(rover, mars_grid):
     try:
-        assert isinstance(rover, Rover.Rover)
+        assert isinstance(rover, Rover)
     except AssertionError:
         raise TypeError(f'Invalid rover object {type(rover)}')
 
     try:
-        assert isinstance(mars_grid, Mars.Mars2DGrid)
+        assert isinstance(mars_grid, mars.Mars2DGrid)
     except AssertionError:
         raise TypeError(f'Invalid grid object {type(mars_grid)}')
 
-    if rover.d not in directions:
+    if rover.d not in DIRECTIONS:
         raise LandingProhibited(
-            f'Rover face direction {rover.d} in not in: {directions}')
+            f'Rover face direction {rover.d} in not in: {DIRECTIONS}')
     else:
         try:
             assert mars_grid.grid[rover.x, rover.y] == 0

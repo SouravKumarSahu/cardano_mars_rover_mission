@@ -1,5 +1,6 @@
-from RoverMission.Constants.Parameters import movements
-from RoverMission.Objects import Rover, Mars
+from rover_mission.constants.params import MOVEMENTS
+from rover_mission.Objects import mars
+from rover_mission.Objects.rover import Rover
 
 
 class MoveProhibited(Exception):
@@ -10,19 +11,19 @@ class MoveProhibited(Exception):
 
 def change_position(rover, mars_grid):
     try:
-        assert isinstance(rover, Rover.Rover)
+        assert isinstance(rover, Rover)
     except AssertionError:
         raise TypeError(f'Invalid rover object {type(rover)}')
 
     try:
-        assert isinstance(mars_grid, Mars.Mars2DGrid)
+        assert isinstance(mars_grid, mars.Mars2DGrid)
     except AssertionError:
         raise TypeError(f'Invalid grid object {type(mars_grid)}')
 
     try:
-        x, y = rover.x + movements[rover.d][0], rover.y + movements[rover.d][1]
+        x, y = rover.x + MOVEMENTS[rover.d][0], rover.y + MOVEMENTS[rover.d][1]
     except TypeError:
-        raise MoveProhibited(f'Invalid movement value {movements[rover.d]}')
+        raise MoveProhibited(f'Invalid movement value {MOVEMENTS[rover.d]}')
     
     try:
         assert 0 <= x <= mars_grid.grid.shape[0]

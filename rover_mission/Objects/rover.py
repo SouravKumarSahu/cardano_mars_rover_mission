@@ -1,4 +1,4 @@
-from RoverMission.Constants.Parameters import directions
+from rover_mission.constants.params import DIRECTIONS
 
 
 class RoverError(Exception):
@@ -17,11 +17,11 @@ class Rover:
                 f'Rover landing coordinates are not integer numbers: {x} x {y}')
 
         try:
-            assert d in directions
+            assert d in DIRECTIONS
             self.d = d
         except AssertionError:
             raise TypeError(
-                f'Rover direction {d} is not a part of: {directions}')
+                f'Rover direction {d} is not a part of: {DIRECTIONS}')
 
         self.status = None
         self.message = None

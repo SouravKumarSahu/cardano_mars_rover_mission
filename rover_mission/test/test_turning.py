@@ -1,12 +1,11 @@
 import unittest
-from RoverMission.Operations import Turning
-from RoverMission.Objects import Rover
-from RoverMission.Constants.Parameters import directions
+from rover_mission.Operations import Turning
+from rover_mission.Objects.rover import Rover
 
 class TestTurningOperation(unittest.TestCase):
     def setUp(self):
         # Load test data
-        self.rover = Rover.Rover(2,3,'N')
+        self.rover = Rover(2,3,'N')
 
     def test_type(self):
         #test for type of parameters

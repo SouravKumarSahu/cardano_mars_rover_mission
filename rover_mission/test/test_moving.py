@@ -1,12 +1,13 @@
 import unittest
-from RoverMission.Operations import Moving,Turning, Landing
-from RoverMission.Objects import Rover, Mars
+from rover_mission.Operations import Moving,Turning, Landing
+from rover_mission.Objects.rover import Rover
+from rover_mission.Objects import mars
 
 class TestMovingOperation(unittest.TestCase):
     def setUp(self):
         # Load test data
-        self.mars_grid = Mars.Mars2DGrid(4,5)
-        self.rover = Rover.Rover(2,3,'N')
+        self.mars_grid = mars.Mars2DGrid(4,5)
+        self.rover = Rover(2,3,'N')
         Landing.land_rover(self.rover,self.mars_grid)
 
     def test_type(self):

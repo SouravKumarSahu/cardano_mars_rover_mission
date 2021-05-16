@@ -1,8 +1,8 @@
-from typing import final
-from RoverMission.Operations import Landing, Turning, Moving
-from RoverMission.InputOutput import ReadInput, WriteOutput
-from RoverMission.Objects import Rover, Mars
-from RoverMission.Constants.Parameters import rotations
+from rover_mission.Operations import Landing, Turning, Moving
+from rover_mission.io import ReadInput, WriteOutput
+from rover_mission.Objects import mars
+from rover_mission.Objects.rover import Rover, RoverError
+from rover_mission.constants.params import ROTATIONS
 import sys
 import os
 
@@ -37,20 +37,20 @@ def main():
         print(f'Input read error: make sure input is at {cwd}')
 
     try:
-        mars_grid = Mars.Mars2DGrid(json['grid'][0],json['grid'][1]) 
+        mars_grid = mars.Mars2DGrid(json['grid'][0],json['grid'][1]) 
     except TypeError as e:
         print(e)
-    except Mars.MarsError as e:
+    except mars.MarsError as e:
         print(e)
 
     rovers = []
 
     for rover_num, instruction in enumerate(json['instructions'],start=1):
         try:
-            rover = Rover.Rover(instruction[0][0],instruction[0][1],instruction[0][2])
+            rover = Rover(instruction[0][0],instruction[0][1],instruction[0][2])
         except TypeError as e:
             print(e)
-        except Rover.RoverError as e:
+        except RoverError as e:
             print(e)
         except Exception as e:
             print(e)
@@ -78,7 +78,7 @@ def main():
         
         if rovers[-1].status == 'Successful':
             for moves in instruction[1]:
-                if moves in rotations[0:2]:
+                if moves in ROTATIONS[0:2]:
                     try:
                         Turning.change_direction(moves,rovers[-1])
                     except Turning.TurningError as e:
