@@ -1,6 +1,6 @@
 from rover_mission.constants.params import MOVEMENTS
-from rover_mission.Objects import mars
-from rover_mission.Objects.rover import Rover
+from rover_mission.objects import mars
+from rover_mission.objects.rover import Rover
 
 
 class MoveProhibited(Exception):

@@ -1,7 +1,7 @@
 import unittest
-from rover_mission.Operations import Landing
-from rover_mission.Objects.rover import Rover
-from rover_mission.Objects import mars
+from rover_mission.operations import landing
+from rover_mission.objects.rover import Rover
+from rover_mission.objects import mars
 
 class TestLandingOperation(unittest.TestCase):
     def setUp(self):
@@ -12,11 +12,11 @@ class TestLandingOperation(unittest.TestCase):
 
     def test_type(self):
         #test for type of parameters
-        self.assertRaises(TypeError,Landing.land_rover,'abcd','y')
+        self.assertRaises(TypeError,landing.land_rover,'abcd','y')
 
     def test_off_grid_landing(self):
-        self.assertRaises(Landing.LandingProhibited,Landing.land_rover, self.rover_off_grid, self.mars_grid)
+        self.assertRaises(landing.LandingProhibited,landing.land_rover, self.rover_off_grid, self.mars_grid)
 
     def test_on_grid_landing(self):
-        Landing.land_rover(self.rover_on_grid,self.mars_grid)
+        landing.land_rover(self.rover_on_grid,self.mars_grid)
         self.assertEqual(self.mars_grid.grid[self.rover_on_grid.x][self.rover_on_grid.y],1)

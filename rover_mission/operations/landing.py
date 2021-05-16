@@ -1,6 +1,6 @@
-from rover_mission.Objects.rover import Rover
+from rover_mission.objects.rover import Rover
 from rover_mission.constants.params import DIRECTIONS
-from rover_mission.Objects import mars
+from rover_mission.objects import mars
 
 
 class LandingProhibited(Exception):

@@ -1,7 +1,7 @@
-from rover_mission.Operations import Landing, Turning, Moving
+from rover_mission.operations import landing, turning, moving
 from rover_mission.io import ReadInput, WriteOutput
-from rover_mission.Objects import mars
-from rover_mission.Objects.rover import Rover, RoverError
+from rover_mission.objects import mars
+from rover_mission.objects.rover import Rover, RoverError
 from rover_mission.constants.params import ROTATIONS
 import sys
 import os
@@ -60,8 +60,8 @@ def main():
             print(f'Rover {rover_num} : \n- Initial orientation - {rover}')
         
         try:
-            Landing.land_rover(rovers[-1],mars_grid)
-        except Landing.LandingProhibited as e:
+            landing.land_rover(rovers[-1],mars_grid)
+        except landing.LandingProhibited as e:
             rovers[-1].status = 'Await rescue'
             rovers[-1].message = e.__str__()
         except TypeError as e:
@@ -80,8 +80,8 @@ def main():
             for moves in instruction[1]:
                 if moves in ROTATIONS[0:2]:
                     try:
-                        Turning.change_direction(moves,rovers[-1])
-                    except Turning.TurningError as e:
+                        turning.change_direction(moves,rovers[-1])
+                    except turning.TurningError as e:
                         rovers[-1].status = 'Await rescue'
                         rovers[-1].message = e.__str__()
                     except TypeError as e:
@@ -98,8 +98,8 @@ def main():
                         print(f'-- Tried turning to {moves} : latest orientation - {rover}')
                 else:
                     try:
-                        Moving.change_position(rovers[-1],mars_grid)
-                    except Moving.MoveProhibited as e:
+                        moving.change_position(rovers[-1],mars_grid)
+                    except moving.MoveProhibited as e:
                         rovers[-1].status = 'Await rescue'
                         rovers[-1].message = e.__str__()
                     except TypeError as e:

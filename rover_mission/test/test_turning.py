@@ -1,6 +1,6 @@
 import unittest
-from rover_mission.Operations import Turning
-from rover_mission.Objects.rover import Rover
+from rover_mission.operations import turning
+from rover_mission.objects.rover import Rover
 
 class TestTurningOperation(unittest.TestCase):
     def setUp(self):
@@ -9,27 +9,27 @@ class TestTurningOperation(unittest.TestCase):
 
     def test_type(self):
         #test for type of parameters
-        self.assertRaises(TypeError,Turning.change_direction,'abcd','y')
+        self.assertRaises(TypeError,turning.change_direction,'abcd','y')
 
     def test_90_left_turn(self):
-        Turning.change_direction('L',self.rover)
+        turning.change_direction('L',self.rover)
         self.assertEqual(self.rover.d,'W')
         
     def test_90_right_turn(self):
-        Turning.change_direction('R',self.rover)
+        turning.change_direction('R',self.rover)
         self.assertEqual(self.rover.d,'E')
 
     def test_360_left_turn(self):
-        Turning.change_direction('L',self.rover)
-        Turning.change_direction('L',self.rover)
-        Turning.change_direction('L',self.rover)
-        Turning.change_direction('L',self.rover)
+        turning.change_direction('L',self.rover)
+        turning.change_direction('L',self.rover)
+        turning.change_direction('L',self.rover)
+        turning.change_direction('L',self.rover)
         self.assertEqual(self.rover.d,'N')
         
     def test_360_right_turn(self):
-        Turning.change_direction('R',self.rover)
-        Turning.change_direction('R',self.rover)
-        Turning.change_direction('R',self.rover)
-        Turning.change_direction('R',self.rover)
+        turning.change_direction('R',self.rover)
+        turning.change_direction('R',self.rover)
+        turning.change_direction('R',self.rover)
+        turning.change_direction('R',self.rover)
         self.assertEqual(self.rover.d,'N')
     

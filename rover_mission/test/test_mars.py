@@ -1,5 +1,5 @@
 import unittest
-from rover_mission.Objects import mars
+from rover_mission.objects import mars
 
 
 class TestMarsGridObject(unittest.TestCase):

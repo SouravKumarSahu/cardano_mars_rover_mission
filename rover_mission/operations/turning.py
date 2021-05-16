@@ -1,5 +1,5 @@
 from rover_mission.constants.params import ROTATIONS, DIRECTIONS
-from rover_mission.Objects.rover import Rover
+from rover_mission.objects.rover import Rover
 
 
 class TurningError(Exception):
