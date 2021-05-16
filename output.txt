@@ -1,0 +1,7 @@
+4 5
+2 1 S
+Successful - (Rover move successful)
+1 2 W
+Await rescue - (Rover will fall off grid)
+4 6 S
+Await rescue - (Landing location outside the grid)
