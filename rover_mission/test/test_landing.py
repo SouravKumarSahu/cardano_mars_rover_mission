@@ -7,8 +7,8 @@ class TestLandingOperation(unittest.TestCase):
     def setUp(self):
         # Load test data
         self.mars_grid = mars.Mars2DGrid(4,5)
-        self.rover_on_grid = Rover(2,3,'N')
-        self.rover_off_grid = Rover(6,2,'N')
+        self.rover_on_grid = Rover(2,3,'N',1)
+        self.rover_off_grid = Rover(6,2,'N',1)
 
     def test_type(self):
         #test for type of parameters

@@ -1,8 +1,12 @@
+from json import dumps
+
+
 def read_input_text(file_name):
-    json = {}
+    dict_input = {}
     with open(file_name, 'r') as f:
-        json['grid'] = [int(k) for k in f.readline().split()]
-        json['instructions'] = []
+        dict_input['grid'] = [int(k) for k in f.readline().split()]
+        dict_input['instructions'] = []
         for l in f:
-            json['instructions'].append([l.split(), f.readline().split()])
-    return json
+            dict_input['instructions'].append(
+                [l.split(), f.readline().split()])
+    return dumps(dict_input)

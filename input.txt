@@ -1,7 +1,9 @@
-4 5
+10 15
 2 2 N
 L L M
 3 2 E
-R R M M M
+R R M M M R M M
 4 6 S
 M M R
+4 5 S
+M M M M M

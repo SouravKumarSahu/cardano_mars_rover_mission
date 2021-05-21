@@ -7,7 +7,7 @@ class TestMovingOperation(unittest.TestCase):
     def setUp(self):
         # Load test data
         self.mars_grid = mars.Mars2DGrid(4,5)
-        self.rover = Rover(2,3,'N')
+        self.rover = Rover(2,3,'N',1)
         landing.land_rover(self.rover,self.mars_grid)
 
     def test_type(self):

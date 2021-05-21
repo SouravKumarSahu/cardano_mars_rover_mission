@@ -26,7 +26,7 @@ def land_rover(rover, mars_grid):
     else:
         try:
             assert mars_grid.grid[rover.x, rover.y] == 0
-            mars_grid.grid[rover.x, rover.y] = 1
+            mars_grid.grid[rover.x, rover.y] = rover.id
         except AssertionError:
             raise LandingProhibited('Landing location occupied')
         except IndexError:

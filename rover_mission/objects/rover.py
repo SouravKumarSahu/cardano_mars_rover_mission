@@ -8,7 +8,10 @@ class RoverError(Exception):
 
 
 class Rover:
-    def __init__(self, x, y, d):
+    def __init__(self, x, y, d, id):
+        
+        self.id = id
+        
         try:
             self.x = int(x) - 1
             self.y = int(y) - 1

@@ -5,7 +5,7 @@ from rover_mission.objects.rover import Rover
 class TestTurningOperation(unittest.TestCase):
     def setUp(self):
         # Load test data
-        self.rover = Rover(2,3,'N')
+        self.rover = Rover(2,3,'N', 1)
 
     def test_type(self):
         #test for type of parameters
