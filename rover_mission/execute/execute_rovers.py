@@ -23,6 +23,8 @@ def operate_rover(json_inst):
     except TypeError as e:
         raise TypeError(e.__str__())
     except mars.MarsError as e:
+        raise mars.MarsError(e.__str__())
+    except Exception as e:
         raise OperateException(e.__str__())
 
     for rover_num, instruction in enumerate(dict_input['instructions'], start=1):
@@ -32,7 +34,9 @@ def operate_rover(json_inst):
                           instruction[0][1], instruction[0][2], rover_num)
         except TypeError as e:
             raise TypeError(e.__str__())
-        except (RoverError, Exception) as e:
+        except RoverError as e:
+            raise RoverError(e.__str__())
+        except Exception as e:
             raise OperateException(e.__str__())
         else:
             rovers.append(rover)
@@ -47,13 +51,13 @@ def operate_rover(json_inst):
             rovers[-1].message = e.__str__()
         else:
             rovers[-1].status = 'Successful'
-            rovers[-1].message = 'Rover landed successfully'
+            rovers[-1].message = f'Rover {rovers[-1].id} landed successfully'
 
         if rovers[-1].status == 'Successful':
             for moves in instruction[1]:
                 if moves in ROTATIONS[0:2]:
                     try:
-                        turning.change_direction(moves, rovers[-1])
+                        turning.change_direction(moves, rovers[-1], mars_grid)
                     except (turning.TurningError, TypeError) as e:
                         rovers[-1].status = 'Await rescue'
                         rovers[-1].message = e.__str__()
@@ -62,7 +66,7 @@ def operate_rover(json_inst):
                         rovers[-1].message = e.__str__()
                     else:
                         rovers[-1].status = 'Successful'
-                        rovers[-1].message = 'Rover turn successful'
+                        rovers[-1].message = f'Rover {rovers[-1].id} turn successful'
                 else:
                     try:
                         moving.change_position(rovers[-1], mars_grid)
@@ -74,7 +78,7 @@ def operate_rover(json_inst):
                         rovers[-1].message = e.__str__()
                     else:
                         rovers[-1].status = 'Successful'
-                        rovers[-1].message = 'Rover move successful'
+                        rovers[-1].message = f'Rover {rovers[-1].id} move successful'
 
     dict_output = {}
     dict_output['grid'] = dict_input['grid']

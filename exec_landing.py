@@ -53,7 +53,6 @@ def main():
     except Exception as e:
         logger.error(e)
 
-
     try:
         if len(rovers) > 0:
             WriteOutput.write_output_text(output_file, json_output)

@@ -1,9 +1,0 @@
-10 15
-2 1 S
-Successful - (Rover move successful)
-1 4 N
-Successful - (Rover move successful)
-4 4 W
-Successful - (Rover turn successful)
-4 5 S
-Await rescue - (Rover can't move, path blocked)
